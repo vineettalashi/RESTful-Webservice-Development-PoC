@@ -106,8 +106,19 @@ public class MessageDAOService implements IMessageDAO{
 
 	@Override
 	public Messages updateMessage(long id, Messages NewMessage) {
-		// TODO Auto-generated method stub
-		return null;
+
+		try{
+			System.out.println("UPDATE messages SET Author='"+NewMessage.getAuthor()+"' WHERE id='"+id+"';");
+			NewMessage.setId(id);
+			PreparedStatement ps = conn.prepareStatement("UPDATE messages SET Author='"+NewMessage.getAuthor()+"' WHERE id='"+id+"';");
+			 ps.execute();			
+		}
+		catch(Exception e)
+		{
+			
+		}
+		return NewMessage;
+
 	}
 
 	@Override
